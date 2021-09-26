@@ -2,7 +2,7 @@ FROM node:14.17.6-buster
 MAINTAINER xm0625
 
 RUN apt-get update && \
-    apt-get install -y cronie \
+    apt-get install -y cron \
                        wget \
                        net-tools \
                        procps \
@@ -10,13 +10,9 @@ RUN apt-get update && \
     && apt-get clean \
     && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && mkdir -p /var/spool/cron
-    && mkdir -p /work
-
-cat > /var/spool/cron/root <<EOF
-*/1 * * * * echo "DemoScript:`date`"
-EOF
-
+    && mkdir -p /var/spool/cron \
+    && mkdir -p /work \
+    && echo '*/1 * * * * echo "DemoScript"' > /var/spool/cron/root
 
 WORKDIR /
 CMD /usr/sbin/crond -n -x proc | grep log_it 
