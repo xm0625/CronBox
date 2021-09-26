@@ -1,2 +1,2 @@
 # CronBox
-Debian with Cron/NodeJS support
+Centos with Cronie/NodeJS support
