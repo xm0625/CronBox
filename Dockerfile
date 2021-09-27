@@ -21,4 +21,4 @@ RUN cd /tmp \
     && rm -rf /tmp/* /var/tmp/*
 
 WORKDIR /
-CMD /usr/sbin/crond -n -x proc | grep log_it 
+CMD chmod 600 /var/spool/cron/root; /usr/sbin/crond -n -x proc | grep log_it 
