@@ -2,6 +2,7 @@ FROM centos:8
 MAINTAINER xm0625
 
 RUN yum install -y cronie \
+                       which \
                        wget \
                        net-tools \
                        procps \
@@ -9,7 +10,8 @@ RUN yum install -y cronie \
     && yum clean all \
     && mkdir -p /var/spool/cron \
     && mkdir -p /work \
-    && echo '*/1 * * * * source /root/.bashrc; node -v' > /var/spool/cron/root \
+    && echo '*/1 * * * * echo "hello world"' > /var/spool/cron/root \
+    && chmod 600 /var/spool/cron/root \
     && rm -rf /tmp/* /var/tmp/*
 
 # 安装nodejs 14 lts
@@ -20,5 +22,11 @@ RUN cd /tmp \
     && echo 'PATH=/usr/local/lib/nodejs/node-v14.17.6-linux-x64/bin:$PATH' >> /root/.bashrc \
     && rm -rf /tmp/* /var/tmp/*
 
+ADD cron_root.txt /
+ADD CronRootSync.sh /
+ADD run.sh /
+
+RUN chmod 777 /*.*
+
 WORKDIR /
-CMD chmod 600 /var/spool/cron/root; /usr/sbin/crond -n -x proc | grep log_it 
+CMD /run.sh

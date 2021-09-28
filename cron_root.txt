@@ -1,0 +1,1 @@
+*/1 * * * * source /root/.bashrc; echo "node_version: `node -v`"
