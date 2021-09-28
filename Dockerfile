@@ -22,7 +22,7 @@ RUN cd /tmp \
     && echo 'PATH=/usr/local/lib/nodejs/node-v14.17.6-linux-x64/bin:$PATH' >> /root/.bashrc \
     && rm -rf /tmp/* /var/tmp/*
 
-ADD cron_root.txt /
+ADD cron_root.txt /data/
 ADD CronRootSync.sh /
 ADD run.sh /
 
