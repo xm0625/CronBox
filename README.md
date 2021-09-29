@@ -1,2 +1,2 @@
 # CronBox
-Centos with Cronie/NodeJS support
+Centos with Cronie/NodeJS/Puppeteer(chromium) support
