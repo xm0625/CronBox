@@ -22,6 +22,23 @@ RUN cd /tmp \
     && echo 'PATH=/usr/local/lib/nodejs/node-v14.17.6-linux-x64/bin:$PATH' >> /root/.bashrc \
     && rm -rf /tmp/* /var/tmp/*
 
+# support Puppeteer(chromium)
+RUN yum install -y nss \
+                   atk-devel \
+                   at-spi2-atk-devel \
+                   cups-libs libdrm-devel \
+                   libxkbcommon-devel \
+                   libXcomposite-devel \
+                   libXdamage-devel \
+                   libXrandr-devel \
+                   libgbm-devel \
+                   mesa-libgbm \
+                   pango-devel \
+                   alsa-lib-devel \
+                   libxshmfence-devel \
+    && yum clean all \
+    && rm -rf /tmp/* /var/tmp/*
+
 ADD cron_root.txt /data/
 ADD CronRootSync.sh /
 ADD run.sh /
