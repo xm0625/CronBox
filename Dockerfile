@@ -31,7 +31,6 @@ RUN yum install -y nss \
                    libXcomposite-devel \
                    libXdamage-devel \
                    libXrandr-devel \
-                   libgbm-devel \
                    mesa-libgbm \
                    pango-devel \
                    alsa-lib-devel \
