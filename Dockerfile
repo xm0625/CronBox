@@ -6,6 +6,7 @@ RUN yum install -y cronie \
                        wget \
                        net-tools \
                        procps \
+                       psmisc \
     # 用完包管理器后安排打扫卫生可以显著的减少镜像大小
     && yum clean all \
     && mkdir -p /var/spool/cron \
